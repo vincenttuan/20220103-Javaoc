@@ -20,7 +20,7 @@ public class TryCatchDemo {
 			// block of code
 		//} catch (ArithmeticException | NullPointerException | RuntimeException e) { // 錯誤
 		} catch (ArithmeticException | NullPointerException e) {	
-			System.out.println("統一處理處學錯誤與空指標錯誤");
+			System.out.println("統一處理:數學錯誤與空指標錯誤");
 		} catch (Exception e) {
 			System.out.println("其他錯誤");
 		}
