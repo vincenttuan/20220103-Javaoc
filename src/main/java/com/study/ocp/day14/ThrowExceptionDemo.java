@@ -14,6 +14,7 @@ public class ThrowExceptionDemo {
 		} catch (Exception e) {
 			System.out.println("錯誤訊息:" + e);
 			System.out.println("請重新登入");
+			main(null); // 重新執行 main 
 		}
 	}
 	
