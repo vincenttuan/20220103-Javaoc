@@ -12,15 +12,15 @@ public class ThrowExceptionDemo3 {
 	public static void main(String[] args) {
 		try {
 			loginForm();
-		} catch (Exception e) {
-			System.out.println("錯誤訊息:" + e);
-			System.out.println("請重新登入");
-			main(null); // 重新執行 main 
+		} catch (LoginException ex) {
+			System.out.println(ex.getMessage());
+			ex.列印錯誤訊息();
+			ex.要怎麼辦();
 		}
 	}
 	
 	// 登入作業輸入介面
-	public static void loginForm() throws Exception {
+	public static void loginForm() throws LoginException {
 		System.out.print("請輸入 username: ");
 		Scanner sc = new Scanner(System.in);
 		String username = sc.next();
@@ -30,12 +30,12 @@ public class ThrowExceptionDemo3 {
 	
 	// 驗證是否登入成功 ?
 	// 若驗證成功回傳 true, 反之拋出 Exception 例外
-	public static boolean checkLogin(String username) throws Exception {
+	public static boolean checkLogin(String username) throws LoginException {
 		Optional<String> opt = users.stream().filter(user -> user.equals(username)).findAny();
 		if(opt.isPresent()) {
 			return true;
 		} else {
-			Exception e = new Exception("找不到此人:" + username);
+			LoginException e = new LoginException("找不到此人:" + username);
 			throw e;
 		}
 	}
