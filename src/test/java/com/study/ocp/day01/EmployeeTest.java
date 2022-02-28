@@ -2,9 +2,12 @@ package com.study.ocp.day01;
 
 import java.util.Date;
 
-public class EmployeeTest {
+import org.junit.Test;
 
-	public static void main(String[] args) {
+public class EmployeeTest {
+	
+	@Test
+	public void test() {
 		Employee e1 = new Employee();
 		e1.name = "John";
 		e1.birth = new Date();
