@@ -11,7 +11,6 @@ public class USDMain {
 		Thread t1 = new Thread(usd);
 		t1.start();
 		
-		
 	}
 
 }
