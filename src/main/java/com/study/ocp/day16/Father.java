@@ -11,7 +11,11 @@ public class Father extends Thread {
 		worker.start();
 		
 		try {
-			worker.join();
+			// join 可以設定最大等候時間
+			worker.join(10_000);
+			// 要了解 join() 與 sleep() 的差異
+			// sleep() 會等到時間完畢之後才會工作
+			//Thread.sleep(10_000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
