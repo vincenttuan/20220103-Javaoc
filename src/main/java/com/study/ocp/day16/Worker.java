@@ -11,7 +11,7 @@ public class Worker extends Thread {
 			} catch (InterruptedException e) {
 				System.out.println("發生意外:" + e);
 			}
-			System.out.println("\n瓦斯工人將瓦斯送到");
 		}
+		System.out.println("\n瓦斯工人將瓦斯送到");
 	}
 }
