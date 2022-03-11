@@ -10,7 +10,7 @@ public class CarMain {
 		
 		CyclicBarrier cyclicBarrier = new CyclicBarrier(n, job);
 		
-		for(int i=0;i<n;i++) {
+		for(int i=0;i<n+1;i++) {
 			 Thread t1 = new Thread(new Car(cyclicBarrier));
 			 t1.start();
 		}
