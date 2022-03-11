@@ -12,12 +12,13 @@ public class Account {
 	}
 	
 	// 提款(money = 提款金額)
-	public void withdraw(int money) {
+	public synchronized void withdraw(int money) {
 		// 取得執行緒名稱
 		String tName = Thread.currentThread().getName();
 		System.out.printf("%s 開始提款, 提款金額 $%,d\n", tName, money);
 		// 取得目前最新提款金額 -------------------------------------------------------------------
 		int currentBalance = getBalance();
+		System.out.printf("%s 取得的目前最新提款金額 $%,d\n", tName, currentBalance);
 		// 模擬運作時間
 		for(int i=0;i<999999999;i++);
 		// 判斷
