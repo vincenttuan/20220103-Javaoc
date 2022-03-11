@@ -5,7 +5,7 @@ public class Cookies {
 	
 	public synchronized void put(int i) {
 		String tName = Thread.currentThread().getName();
-		if(!empty) { // (empty == false)
+		while(!empty) { // (empty == false)
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -14,12 +14,12 @@ public class Cookies {
 		}
 		System.out.printf("%s 放了第 %d 餅乾\n", tName, i); // 放餅乾
 		empty = false; // 放完了
-		notify(); // 呼叫小狗
+		notifyAll(); // 呼叫小狗
 	}
 	
 	public synchronized void eat(int i) {
 		String tName = Thread.currentThread().getName();
-		if(empty) { // (empty == true)
+		while(empty) { // (empty == true)
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -28,7 +28,7 @@ public class Cookies {
 		}
 		System.out.printf("%s 吃了第 %d 餅乾\n", tName, i); // 吃餅乾
 		empty = true; // 吃完了
-		notify(); // 呼叫主人
+		notifyAll(); // 呼叫主人
 	}
 	
 }
