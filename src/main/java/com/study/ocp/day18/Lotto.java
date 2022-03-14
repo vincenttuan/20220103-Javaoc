@@ -1,5 +1,6 @@
 package com.study.ocp.day18;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Lotto implements Runnable {
@@ -14,7 +15,7 @@ public class Lotto implements Runnable {
 		}
 		int n = random.nextInt(100);
 		String tName = Thread.currentThread().getName();
-		System.out.printf("%s -> %d\n", tName, n);
+		System.out.printf("time:%s thead:%s -> %d\n", new Date(), tName, n);
 	}
 	
 }
