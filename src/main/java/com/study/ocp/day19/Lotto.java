@@ -13,6 +13,7 @@ public class Lotto implements Callable<Map<String, Integer>> {
 	@Override
 	public Map<String, Integer> call() throws Exception {
 		Map<String, Integer> map = new HashMap<>();
+		Thread.sleep(new Random().nextInt(100));
 		map.put(name, new Random().nextInt(100));
 		return map;
 	}

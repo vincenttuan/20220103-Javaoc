@@ -24,6 +24,11 @@ public class LottoMain {
 		for(Future<Map<String, Integer>> future : results) {
 			System.out.println(future.get());
 		}
+		System.out.println(Thread.activeCount());
+		System.out.println("-------------------------------");
+		Map<String, Integer> map = service.invokeAny(collection);
+		System.out.println(map);
+		System.out.println(Thread.activeCount());
 
 	}
 
