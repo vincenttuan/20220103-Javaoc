@@ -26,7 +26,9 @@ public class SumTaskMain {
 		// start time:
 		long startTime = System.currentTimeMillis();
 		// ForkJoin task 運行
-		long result = ForkJoinPool.commonPool().invoke(task);
+		ForkJoinPool pool = ForkJoinPool.commonPool();
+		long result = pool.invoke(task);
+		System.out.printf("Pool 所使用的內核數量: %d\n", pool.getPoolSize());
 		// end time:
 		long endTime = System.currentTimeMillis();
 		System.out.printf("Fork/Join 結果: %d in %d ms.\n", 
