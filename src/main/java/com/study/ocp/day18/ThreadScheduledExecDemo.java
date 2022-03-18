@@ -10,8 +10,8 @@ public class ThreadScheduledExecDemo {
 	public static void main(String[] args) {
 		ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
 		System.out.printf("time:%s\n", new Date());
-		service.scheduleWithFixedDelay(new Lotto(), 0, 1, TimeUnit.SECONDS);
-		
+		//service.scheduleWithFixedDelay(new Lotto(), 0, 1, TimeUnit.SECONDS);
+		service.scheduleAtFixedRate(new Lotto(), 0, 3, TimeUnit.SECONDS);
 		//service.shutdown();
 
 	}
