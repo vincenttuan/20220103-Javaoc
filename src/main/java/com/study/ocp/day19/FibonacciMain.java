@@ -1,5 +1,8 @@
 package com.study.ocp.day19;
 
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ForkJoinTask;
+
 public class FibonacciMain {
 	public static void main(String[] args) {
 		int num = 45;
@@ -12,7 +15,13 @@ public class FibonacciMain {
 		System.out.printf("Recursive fib(%d) = %d in %d ms\n", num, result, (endTime-startTime));
 		
 		// Forkjoin
-		// 自己寫
+		ForkJoinTask<Long> task = new FibonacciTask(num);
+		int proc = Runtime.getRuntime().availableProcessors();
+		ForkJoinPool pool = new ForkJoinPool(proc);
+		startTime = System.currentTimeMillis();
+		result = pool.invoke(task);
+		endTime = System.currentTimeMillis();
+		System.out.printf("Forkjoin fib(%d) = %d in %d ms\n", num, result, (endTime-startTime));
 		
 	}
 }
