@@ -18,6 +18,9 @@ public class SumTaskMain {
 		System.out.printf("任務: %s\n", Arrays.toString(array));
 		System.out.printf("期望結果: %d\n", expectedSum);
 		System.out.println("-------------------------------------------");
+		// 取得內核數量
+		int proc = Runtime.getRuntime().availableProcessors();
+		System.out.printf("處理器內核數量: %d\n", proc);
 		// ForkJoin task
 		ForkJoinTask<Long> task = new SumTask(array, 0, array.length);
 		// start time:
