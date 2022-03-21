@@ -15,8 +15,8 @@ public class Fibonacci_Java8_2 {
 		//Stream.iterate(0, n -> n + 1).limit(10).forEach(System.out::println);
 		// 設定私有池大小
 		int proc = Runtime.getRuntime().availableProcessors();
-		ForkJoinPool pool = new ForkJoinPool(proc-2);
-		int a = 50;
+		ForkJoinPool pool = new ForkJoinPool(proc);
+		int a = 3;
 		
 		ForkJoinTask<Long> task = pool.submit(() -> {
 			List<Long> fib = Stream.iterate(new long[] {0, 1}, n -> new long[] {n[1], n[0] + n[1]})

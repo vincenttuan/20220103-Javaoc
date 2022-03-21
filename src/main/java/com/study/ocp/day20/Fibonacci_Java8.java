@@ -13,6 +13,7 @@ public class Fibonacci_Java8 {
 		//Stream.iterate(0, n -> n + 1).limit(10).forEach(System.out::println);
 		// 設定公用池大小
 		int proc = Runtime.getRuntime().availableProcessors();
+		proc = 20;
 		System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", String.valueOf(proc));
 		int a = 50;
 		List<Long> fib = Stream.iterate(new long[] {0, 1}, n -> new long[] {n[1], n[0] + n[1]})
