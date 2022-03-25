@@ -1,8 +1,9 @@
 package com.study.ocp.day22;
 
+import java.io.Serializable;
 import java.util.Random;
 
-public class Employee {
+public class Employee implements Serializable {
 	private String name;
 	private Integer salary;
 	
