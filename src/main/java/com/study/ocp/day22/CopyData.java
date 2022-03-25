@@ -12,7 +12,7 @@ public class CopyData {
 			FileWriter fw = new FileWriter(destPath);) {
 			char[] buffer = new char[1];
 			while (fr.read(buffer) != -1) {
-				fw.write(buffer);
+				fw.write(buffer); // 將 char[] 寫入
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
