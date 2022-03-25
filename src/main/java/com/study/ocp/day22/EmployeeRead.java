@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 public class EmployeeRead {
 
 	public static void main(String[] args) {
-		String filePath = "src\\main\\java\\com\\study\\ocp\\day22\\files\\john2.ser";
+		String filePath = "src\\main\\java\\com\\study\\ocp\\day22\\files\\john.ser";
 		try(FileInputStream fis = new FileInputStream(filePath);
 			ObjectInputStream ois = new ObjectInputStream(fis)) {
 			
