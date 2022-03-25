@@ -1,4 +1,4 @@
-package com.study.ocp.day22.files;
+package com.study.ocp.day22;
 
 import java.io.FileWriter;
 import java.util.Date;
