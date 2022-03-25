@@ -11,7 +11,7 @@ public class BufferedReaderDemo {
 			BufferedReader br = new BufferedReader(fr);) {
 			
 			String data;
-			while ((data = br.readLine()) != null) {
+			while ((data = br.readLine()) != null) { // null 表示讀到檔尾
 				System.out.println(data);
 			}
 			
