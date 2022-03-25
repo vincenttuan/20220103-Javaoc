@@ -5,7 +5,8 @@ import java.util.Random;
 
 public class Employee implements Serializable {
 	private String name;
-	private Integer salary;
+	//private transient Integer salary; // 不想被序列化
+	private Integer salary; // 不想被序列化
 	
 	public Employee(String name) {
 		this.name = name;
