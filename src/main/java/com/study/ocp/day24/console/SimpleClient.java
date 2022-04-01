@@ -23,6 +23,7 @@ public class SimpleClient {
 			// 3. 將資料傳給 Server
 			System.out.print("請輸入傳送訊息:");
 			String message = sc.next();
+			oos.writeObject(message);
 			if(message.equalsIgnoreCase("exit")) {
 				break;
 			}
