@@ -25,19 +25,19 @@ public class WebServer {
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "big5")), true);
 			System.out.println("瀏覽器成功連入");
-			System.out.println("瀏覽器傳來的資料 : " + br.readLine()); // 得到 HTTP 文件的第一行
+			//System.out.println("瀏覽器傳來的資料 : " + br.readLine()); // 得到 HTTP 文件的第一行
 			//----------------------------------------------------------------------------
 			// 回應 HTTP 文件結構(4 parts)
 			// Part 1 : init line
-			out.println("HTTP/1.1 200 OK");
+			out.println("HTTP/1.1 200 Ok");
 			// Part 2 : header info
 			out.println("Content-Type: text/html");
-			out.println("Server: GjunWebServer");
+			out.println("Server: GjunWebServer" + new Date().getTime());
 			// Part 3 : Blank line
 			out.println();
 			// Part 4 : Body (回應給瀏覽器的 HTML 內容)
 			out.println("<H1>現在時刻: " + new Date() + "</H1>");
-			
+			out.close();
 		}
 		
 		
