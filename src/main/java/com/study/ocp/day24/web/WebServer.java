@@ -7,6 +7,9 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Date;
 
 public class WebServer {
@@ -25,7 +28,14 @@ public class WebServer {
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream(), "big5")), true);
 			System.out.println("瀏覽器成功連入");
-			//System.out.println("瀏覽器傳來的資料 : " + br.readLine()); // 得到 HTTP 文件的第一行
+			/*
+			String data = null;
+			System.out.println("瀏覽器傳來的資料: ");
+			while ((data = br.readLine()) != null) {
+				System.out.println(data); // 得到 HTTP 文件
+			}
+			*/
+			
 			//----------------------------------------------------------------------------
 			// 回應 HTTP 文件結構(4 parts)
 			// Part 1 : init line
@@ -36,7 +46,9 @@ public class WebServer {
 			// Part 3 : Blank line
 			out.println();
 			// Part 4 : Body (回應給瀏覽器的 HTML 內容)
-			out.println("<H1>現在時刻: " + new Date() + "</H1>");
+			//out.println("<H1>現在時刻: " + new Date() + "</H1>");
+			Path path = Paths.get("src\\main\\java\\com\\study\\ocp\\day24\\web\\welcome.happy");
+			out.println(String.format(Files.readAllLines(path).toString(), new Date()) );
 			out.close();
 		}
 		
