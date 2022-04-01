@@ -17,9 +17,10 @@ public class SimpleClient {
 		Socket socket = new Socket(ip, port);
 		System.out.println("與 Server 端建立連線成功");
 		// 2. 建立 Input/Output Stream
-		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 		ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+		ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 		while (true) {
+			sc = new Scanner(System.in);
 			// 3. 將資料傳給 Server
 			System.out.print("請輸入傳送訊息:");
 			String message = sc.next();
