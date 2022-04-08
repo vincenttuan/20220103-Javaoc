@@ -20,15 +20,15 @@ public class BatchInsert {
 			PreparedStatement pstmt = conn.prepareStatement(sql);) {
 			pstmt.clearBatch(); // 清除 batch
 			
-			for(int i=0;i<10000;i++) {
+			for(int i=0;i<1000;i++) {
 				pstmt.setString(1, faker.name().firstName());
 				pstmt.setInt(2, 20 + random.nextInt(20));
 				pstmt.setDouble(3, 25250 + random.nextInt(100000));
-				pstmt.addBatch();
+				pstmt.addBatch(); // 加入 batch
 			}
 			
 			int[] rowcounts = pstmt.executeBatch(); // 批次執行
-			System.out.println(Arrays.toString(rowcounts));
+			System.out.println("批次執行 OK");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

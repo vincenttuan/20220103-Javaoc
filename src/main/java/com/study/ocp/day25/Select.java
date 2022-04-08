@@ -19,18 +19,18 @@ public class Select {
 			
 			ResultSetMetaData sm = rs.getMetaData();
 			System.out.println(sm.getTableName(1));
-			System.out.println("+----+----------+----+----------+");
-			System.out.printf("|%4s|%-10s|%4s|%10s|\n", 
+			System.out.println("+-----+----------+----+----------+");
+			System.out.printf("|%5s|%-10s|%4s|%10s|\n", 
 							  sm.getColumnName(1), sm.getColumnName(2), sm.getColumnName(3), sm.getColumnName(4));
-			System.out.println("+----+----------+----+----------+");
+			System.out.println("+-----+----------+----+----------+");
 			// 利用 while 將 rs 集合內的資料依序顯示
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String name = rs.getString("name");
 				int age = rs.getInt("age");
 				double salary = rs.getDouble("salary");
-				System.out.printf("|%4d|%-10s|%4d|%10.1f|\n", id, name, age, salary);
-				System.out.println("+----+----------+----+----------+");
+				System.out.printf("|%5d|%-10s|%4d|%10.1f|\n", id, name, age, salary);
+				System.out.println("+-----+----------+----+----------+");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
