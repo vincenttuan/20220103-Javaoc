@@ -3,6 +3,7 @@ package com.study.ocp.day25;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 
 public class Select {
@@ -14,8 +15,12 @@ public class Select {
 		try(Connection conn = DriverManager.getConnection(dbUrl);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql);) { // SQL查詢使用 executeQuery()
+			
+			ResultSetMetaData sm = rs.getMetaData();
+			System.out.println(sm.getTableName(1));
 			System.out.println("+----+----------+----+----------+");
-			System.out.println("| id |   name   | age|  salary  |");
+			System.out.printf("|%4s|%-10s|%4s|%10s|\n", 
+							  sm.getColumnName(1), sm.getColumnName(2), sm.getColumnName(3), sm.getColumnName(4));
 			System.out.println("+----+----------+----+----------+");
 			// 利用 while 將 rs 集合內的資料依序顯示
 			while (rs.next()) {
