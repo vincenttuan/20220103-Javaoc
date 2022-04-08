@@ -1,0 +1,36 @@
+package com.study.ocp.day25;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class Select {
+
+	public static void main(String[] args) {
+		//String sql = "Select * From Employee"; // 不建議使用 *
+		String sql = "Select id, name, age, salary From Employee";
+		String dbUrl = "jdbc:sqlite:src/main/java/com/study/ocp/day25/demo.db";
+		try(Connection conn = DriverManager.getConnection(dbUrl);
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);) { // SQL查詢使用 executeQuery()
+			System.out.println("+----+----------+----+----------+");
+			System.out.println("| id |   name   | age|  salary  |");
+			System.out.println("+----+----------+----+----------+");
+			// 利用 while 將 rs 集合內的資料依序顯示
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				int age = rs.getInt("age");
+				double salary = rs.getDouble("salary");
+				System.out.printf("|%4d|%-10s|%4d|%10.1f|\n", id, name, age, salary);
+				System.out.println("+----+----------+----+----------+");
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+}
