@@ -17,7 +17,7 @@ public class CreateTables {
 		
 		String create_stock_table_sql = "create table stock( "
 				+ "id integer not null unique, "
-				+ "symbol varchar(50), "
+				+ "symbol varchar(50) unique, "
 				+ "name varchar(50), "
 				+ "price real, "
 				+ "classify_id integer, "
