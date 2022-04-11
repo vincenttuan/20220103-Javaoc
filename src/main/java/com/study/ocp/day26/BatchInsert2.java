@@ -29,7 +29,7 @@ public class BatchInsert2 {
 				{"2707.TW", "晶華", "5"},
 				{"2727.TW", "王品", "5"},
 				{"2753.TW", "八方雲集", "5"},
-				{"9943.TW ", "好樂迪", "5"},
+				{"9943.TW", "好樂迪", "5"},
 				
 				{"2882.TW", "國泰金", "6"},
 				{"2884.TW", "玉山金", "6"},
@@ -43,8 +43,8 @@ public class BatchInsert2 {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.clearBatch();
 		for(String[] data : datas) {
-			pstmt.setString(1, data[0]);
-			pstmt.setString(2, data[1]);
+			pstmt.setString(1, data[0].trim());
+			pstmt.setString(2, data[1].trim());
 			pstmt.setInt(3, Integer.parseInt(data[2]));
 			pstmt.addBatch();
 		}
