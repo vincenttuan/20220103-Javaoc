@@ -28,7 +28,7 @@ public class SelectStock {
 		Statement stat = conn.createStatement();
 		ResultSet rs = stat.executeQuery(sql);
 		while (rs.next()) {
-			System.out.printf("%s\t%s\t%d\t%.2f\t%.2f\t%.2f\n",
+			System.out.printf("%s\t%s\t%,d\t%,.2f\t%,.2f\t%,.2f\n",
 					rs.getString(1), rs.getString(2),rs.getInt(3),rs.getDouble(4),rs.getDouble(5),rs.getDouble(6));
 		}
 		sql = "select sum((s.price-p.cost)* p.shares) as total\r\n"
@@ -37,7 +37,7 @@ public class SelectStock {
 		rs = stat.executeQuery(sql);
 		System.out.println();
 		while (rs.next()) {
-			System.out.printf("$%.2f\n",rs.getDouble(1));
+			System.out.printf("$%,.2f\n",rs.getDouble(1));
 		}
 	}
 
