@@ -34,7 +34,7 @@ public class CreateTables {
 				+ "PRIMARY KEY(id)"
 				+ ")";
 		
-		String dbUrl = "jdbc:sqlite:src/main/java/com/study/ocp/day25/demo.db";
+		String dbUrl = "jdbc:sqlite:src/main/java/com/study/ocp/day26/demo.db";
 		Connection conn = DriverManager.getConnection(dbUrl);
 		Statement stmt = conn.createStatement();
 		stmt.clearBatch(); // 清除 batch
