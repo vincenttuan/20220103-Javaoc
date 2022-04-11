@@ -1,8 +1,13 @@
 package com.study.ocp.day26;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Arrays;
+
 public class BatchInsert2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		String[][] datas = {
 				{"1101.TW", "台泥", "1"},
 				{"1102.TW", "亞泥", "1"},
@@ -30,8 +35,23 @@ public class BatchInsert2 {
 				{"2884.TW", "玉山金", "6"},
 				{"2885.TW", "元大金", "6"},
 				{"5880.TW", "合庫金", "6"},
-				
 		};
+		
+		String dbUrl = "jdbc:sqlite:src/main/java/com/study/ocp/day26/demo.db";
+		String sql = "insert into stock(symbol, name, classify_id) values(?, ?, ?)";
+		Connection conn = DriverManager.getConnection(dbUrl);
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.clearBatch();
+		for(String[] data : datas) {
+			pstmt.setString(1, data[0]);
+			pstmt.setString(2, data[1]);
+			pstmt.setInt(3, Integer.parseInt(data[2]));
+			pstmt.addBatch();
+		}
+		int[] rowscounts = pstmt.executeBatch();
+		System.out.println("Stock batch insert, rowscounts = " + Arrays.toString(rowscounts));
+		
+		
 
 	}
 
